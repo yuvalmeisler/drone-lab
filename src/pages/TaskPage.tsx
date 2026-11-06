@@ -1,18 +1,102 @@
-import { useEffect, useState, type CSSProperties } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import Amir from '../components/Amir'
 import { useAmir } from '../components/AmirGuide'
 import { IconBolt, IconCheck, IconClock, IconPlay, IconTool } from '../components/Icons'
 import { Page, ease, rise, stagger } from '../components/Motion'
-import { formatTime, getDrone, iso, taskKey, videoList } from '../data/drones'
+import { formatTime, getDrone, iso, taskKey, videoList, type VideoQuiz } from '../data/drones'
 import { toggleDone, useProgress } from '../lib/progress'
 
-function Video({ src, poster }: { src?: string; poster: string }) {
+function QuizVideo({ src, poster, quizzes }: { src: string; poster: string; quizzes: VideoQuiz[] }) {
+  const ref = useRef<HTMLVideoElement>(null)
+  const done = useRef(new Set<number>())
+  const [active, setActive] = useState<number | null>(null)
+  const [picked, setPicked] = useState<number | null>(null)
+
+  useEffect(() => {
+    const v = ref.current
+    if (!v) return
+    let raf = 0
+    const check = () => {
+      const i = quizzes.findIndex((q, k) => !done.current.has(k) && v.currentTime >= q.at)
+      if (i >= 0) {
+        done.current.add(i)
+        v.pause()
+        if (document.fullscreenElement) document.exitFullscreen().catch(() => {})
+        v.currentTime = quizzes[i].at
+        setPicked(null)
+        setActive(i)
+        return
+      }
+      if (!v.paused && !v.ended) raf = requestAnimationFrame(check)
+    }
+    const onPlay = () => {
+      cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(check)
+    }
+    // חזרה אחורה לפני השאלה — השאלה תקפוץ שוב
+    const onSeeked = () => quizzes.forEach((q, k) => v.currentTime < q.at && done.current.delete(k))
+    v.addEventListener('play', onPlay)
+    v.addEventListener('seeked', onSeeked)
+    return () => {
+      cancelAnimationFrame(raf)
+      v.removeEventListener('play', onPlay)
+      v.removeEventListener('seeked', onSeeked)
+    }
+  }, [quizzes])
+
+  useEffect(() => {
+    if (picked === null) return
+    const t = setTimeout(() => {
+      setActive(null)
+      setPicked(null)
+      ref.current?.play().catch(() => {})
+    }, 2200)
+    return () => clearTimeout(t)
+  }, [picked])
+
+  const q = active !== null ? quizzes[active] : null
+  const correct = q && picked === q.answer
+
+  return (
+    <div className="quiz-video">
+      <video ref={ref} className="video-frame" src={src} poster={poster} controls={!q} playsInline />
+      <AnimatePresence>
+        {q && (
+          <motion.div className="quiz-overlay" dir="rtl" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <motion.div className="quiz-card" initial={{ y: 16, scale: 0.96 }} animate={{ y: 0, scale: 1 }} transition={{ duration: 0.35, ease }}>
+              <span className="quiz-tag">שאלה</span>
+              <h3>{q.question}</h3>
+              <div className="quiz-options">
+                {q.options.map((o, i) => {
+                  const state = picked === null ? '' : i === q.answer ? 'right' : i === picked ? 'wrong' : 'dim'
+                  return (
+                    <button key={o} className={state} disabled={picked !== null} onClick={() => setPicked(i)}>
+                      <b>{i + 1}</b> {o}
+                    </button>
+                  )
+                })}
+              </div>
+              {picked !== null && (
+                <motion.p className={`quiz-result ${correct ? 'right' : 'wrong'}`} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }}>
+                  {correct ? 'כל הכבוד! 👏' : <>טעות. התשובה הנכונה: <b>{q.options[q.answer]}</b></>}
+                </motion.p>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  )
+}
+
+function Video({ src, poster, quizzes }: { src?: string; poster: string; quizzes?: VideoQuiz[] }) {
   if (src && /youtu\.?be/.test(src)) {
     const id = src.match(/(?:v=|youtu\.be\/|embed\/)([\w-]{11})/)?.[1]
     return <iframe className="video-frame" src={`https://www.youtube.com/embed/${id}?rel=0`} title="סרטון הדרכה" allowFullScreen />
   }
+  if (src && quizzes?.length) return <QuizVideo src={src} poster={poster} quizzes={quizzes} />
   if (src) return <video className="video-frame" src={src} poster={poster} controls playsInline />
   return (
     <div className="video-placeholder">
@@ -122,7 +206,7 @@ export default function TaskPage() {
         <div className="task-grid">
           <div className="task-main">
             <motion.div className="video-card" initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, ease }}>
-              <Video key={videos[clip] ?? 'none'} src={videos[clip]} poster="/photos/hero-repair.jpg" />
+              <Video key={videos[clip] ?? 'none'} src={videos[clip]} poster="/photos/hero-repair.jpg" quizzes={clip === 0 ? task.quizzes : undefined} />
             </motion.div>
             {videos.length > 1 && (
               <div className="video-tabs" role="tablist">

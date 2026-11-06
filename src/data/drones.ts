@@ -4,6 +4,15 @@
 
 export type Difficulty = 'קל' | 'בינוני' | 'מתקדם'
 
+/** שאלה שקופצת על הסרטון: הסרטון נעצר ב-at שניות וממשיך אחרי התשובה */
+export interface VideoQuiz {
+  at: number
+  question: string
+  options: string[]
+  /** האינדקס של התשובה הנכונה ב-options */
+  answer: number
+}
+
 export interface Task {
   id: string
   title: string
@@ -15,6 +24,8 @@ export interface Task {
   tip?: string
   /** סרטון אחד או כמה (נתיב ב-public/videos או קישור YouTube) */
   video?: string | string[]
+  /** שאלות על הסרטון (לסרטון הראשון) */
+  quizzes?: VideoQuiz[]
 }
 
 export interface Drone {
@@ -242,6 +253,14 @@ export const drones: Drone[] = [
         difficulty: 'מתקדם',
         minutes: 15,
         video: '/videos/avata/frame.mp4',
+        quizzes: [
+          {
+            at: 0.5,
+            question: 'מה הרכיב שנפרק ראשון בשלדה?',
+            options: ['פרופלורים', 'רכיב מערכת הימנעות ממכשולים', 'אנטנות'],
+            answer: 1,
+          },
+        ],
       }),
     ],
   },
