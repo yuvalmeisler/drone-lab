@@ -247,6 +247,7 @@ export const drones: Drone[] = [
           '/videos/avata/frame-4.mp4',
         ],
       }),
+      task('props', { difficulty: 'קל', minutes: 2 }),
     ],
   },
   {
