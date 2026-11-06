@@ -4,6 +4,7 @@ The bloom opens from the centre, covers the frame at the midpoint (hiding the
 cut between clips), then keeps expanding past the edges while fading out.
 
 usage: python3 flower_overlay.py OUT_DIR [--w 720] [--h 1280] [--frames 36] [--seed 1]
+                                         [--palette mavic|avata]
 """
 import argparse
 import math
@@ -12,14 +13,24 @@ import random
 
 from PIL import Image, ImageDraw, ImageFilter
 
-# Palette tuned to the Mavic 3 accent (#D97706) with soft blossom tones
-LAYERS = [
-    # (petal count, length factor, width factor, colour, rotation speed)
-    (12, 1.00, 0.36, (217, 119, 6), 0.9),    # amber outer ring
-    (10, 0.78, 0.40, (244, 114, 182), -1.2),  # pink
-    (8, 0.56, 0.44, (253, 230, 200), 1.6),    # cream
-    (6, 0.34, 0.50, (255, 250, 240), -2.0),   # white heart
-]
+PALETTES = {
+    # Mavic 3 accent (#D97706) with soft blossom tones
+    "mavic": [
+        # (petal count, length factor, width factor, colour, rotation speed)
+        (12, 1.00, 0.36, (217, 119, 6), 0.9),    # amber outer ring
+        (10, 0.78, 0.40, (244, 114, 182), -1.2),  # pink
+        (8, 0.56, 0.44, (253, 230, 200), 1.6),    # cream
+        (6, 0.34, 0.50, (255, 250, 240), -2.0),   # white heart
+    ],
+    # AVATA accent (#7C5CFF) — violet / lilac blossom
+    "avata": [
+        (12, 1.00, 0.36, (124, 92, 255), 0.9),    # violet outer ring
+        (10, 0.78, 0.40, (236, 132, 214), -1.2),  # orchid pink
+        (8, 0.56, 0.44, (221, 214, 254), 1.6),    # lilac
+        (6, 0.34, 0.50, (250, 248, 255), -2.0),   # white heart
+    ],
+}
+LAYERS = PALETTES["mavic"]
 
 
 def ease_in_out(t):
@@ -92,5 +103,7 @@ if __name__ == "__main__":
     ap.add_argument("--h", type=int, default=1280)
     ap.add_argument("--frames", type=int, default=36)
     ap.add_argument("--seed", type=int, default=1)
+    ap.add_argument("--palette", choices=sorted(PALETTES), default="mavic")
     a = ap.parse_args()
+    LAYERS = PALETTES[a.palette]
     render(a.out_dir, a.w, a.h, a.frames, a.seed)

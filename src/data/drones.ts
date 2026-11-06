@@ -241,11 +241,7 @@ export const drones: Drone[] = [
       task('frame', {
         difficulty: 'מתקדם',
         minutes: 15,
-        video: [
-          '/videos/avata/frame-1.mp4',
-          '/videos/avata/frame-2.mp4',
-          '/videos/avata/frame-3.mp4',
-        ],
+        video: '/videos/avata/frame.mp4',
       }),
     ],
   },
