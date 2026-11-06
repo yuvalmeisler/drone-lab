@@ -291,11 +291,7 @@ export const drones: Drone[] = [
     tasks: [
       task('props', {
         minutes: 2,
-        video: [
-          '/videos/mavic-3/props-1.mp4',
-          '/videos/mavic-3/props-2.mp4',
-          '/videos/mavic-3/props-3.mp4',
-        ],
+        video: '/videos/mavic-3/props.mp4',
       }),
       task('speaker', { minutes: 1, video: '/videos/mavic-3/speaker.mp4' }),
       task('camera-cover', { minutes: 0.5 }),
