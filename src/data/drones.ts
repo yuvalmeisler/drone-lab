@@ -260,8 +260,8 @@ export const drones: Drone[] = [
     accentSoft: '#E4F7F6',
     specs: ['עמיד מים ואבק', '2 סוללות', 'מטען מתחלף'],
     tasks: [
-      task('gimbal-cover', { difficulty: 'קל', minutes: 0.15, video: '/videos/alpha/gimbal-cover.mp4' }),
-      task('camera', { difficulty: 'בינוני', minutes: 0.5, video: '/videos/alpha/camera.mp4' }),
+      task('gimbal-cover', { difficulty: 'קל', minutes: 0.5, video: '/videos/alpha/gimbal-cover.mp4' }),
+      task('camera', { difficulty: 'בינוני', minutes: 3, video: '/videos/alpha/camera.mp4' }),
     ],
   },
   {
