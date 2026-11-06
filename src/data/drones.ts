@@ -237,6 +237,7 @@ export const drones: Drone[] = [
     specs: ['טיסת FPV', 'מגן מדחפים מובנה', 'משקפיים'],
     tasks: [
       task('camera-cover', { difficulty: 'קל', minutes: 0.5, video: '/videos/avata/camera-cover.mp4' }),
+      task('props', { difficulty: 'קל', minutes: 2 }),
       task('frame', {
         difficulty: 'מתקדם',
         minutes: 15,
@@ -247,7 +248,6 @@ export const drones: Drone[] = [
           '/videos/avata/frame-4.mp4',
         ],
       }),
-      task('props', { difficulty: 'קל', minutes: 2 }),
     ],
   },
   {
