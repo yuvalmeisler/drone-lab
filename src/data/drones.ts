@@ -231,7 +231,19 @@ export const drones: Drone[] = [
     specs: ['זמן טיסה ~40 דק׳', 'מצלמה כפולה', 'מתקפל'],
     tasks: [
       task('controller'),
-      task('gimbal', { difficulty: 'בינוני', minutes: 3, video: '/videos/evo/gimbal.mp4' }),
+      task('gimbal', {
+        difficulty: 'בינוני',
+        minutes: 3,
+        video: '/videos/evo/gimbal.mp4',
+        quizzes: [
+          {
+            at: 4.5,
+            question: 'האם שני הברגים של הגימבל נשלפים בפירוק?',
+            options: ['כן', 'לא'],
+            answer: 1,
+          },
+        ],
+      }),
       task('props', { minutes: 2, video: '/videos/evo/props.mp4' }),
       task('camera-cover', { minutes: 0.5, video: '/videos/evo/camera-cover.mp4' }),
     ],
