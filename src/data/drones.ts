@@ -339,7 +339,7 @@ export const drones: Drone[] = [
         video: '/videos/matrice/landing-gear.mp4',
         quizzes: [
           {
-            at: 10,
+            at: 8,
             question: 'האם הרחפן יכול להמריא בלי רגליות?',
             options: ['כן', 'לא'],
             answer: 1,
