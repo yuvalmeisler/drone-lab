@@ -302,7 +302,19 @@ export const drones: Drone[] = [
     specs: ['עמיד מים ואבק', '2 סוללות', 'מטען מתחלף'],
     tasks: [
       task('gimbal-cover', { difficulty: 'קל', minutes: 0.5, video: '/videos/alpha/gimbal-cover.mp4' }),
-      task('camera', { difficulty: 'בינוני', minutes: 3, video: '/videos/alpha/camera.mp4' }),
+      task('camera', {
+        difficulty: 'בינוני',
+        minutes: 3,
+        video: '/videos/alpha/camera.mp4',
+        quizzes: [
+          {
+            at: 24,
+            question: 'כיצד נדע שחיברנו את המצלמה נכון?',
+            options: ['על ידי השמעת קליק', 'המצלמה נראית יציבה לאחר החיבור'],
+            answer: 0,
+          },
+        ],
+      }),
     ],
   },
   {
