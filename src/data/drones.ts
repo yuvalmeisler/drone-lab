@@ -244,7 +244,21 @@ export const drones: Drone[] = [
           },
         ],
       }),
-      task('props', { minutes: 2, video: '/videos/evo/props.mp4' }),
+      task('props', {
+        minutes: 2,
+        video: '/videos/evo/props.mp4',
+        quizzes: [
+          {
+            at: 11.5,
+            question: 'כיצד נחבר את הפרופלורים בצורה הנכונה?',
+            options: [
+              'פרופלור מסומן - מנוע מסומן, פרופלור לא מסומן - מנוע לא מסומן',
+              'פרופלור מסומן - מנוע לא מסומן, פרופלור לא מסומן - מנוע מסומן',
+            ],
+            answer: 0,
+          },
+        ],
+      }),
       task('camera-cover', { minutes: 0.5, video: '/videos/evo/camera-cover.mp4' }),
     ],
   },
