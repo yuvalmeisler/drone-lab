@@ -242,6 +242,12 @@ export const drones: Drone[] = [
             options: ['כן', 'לא'],
             answer: 1,
           },
+          {
+            at: 21,
+            question: 'מהו תפקיד הגימבל?',
+            options: ['להחזיק את המצלמה בצורה בטוחה', 'לייצב את המצלמה', 'שתי התשובות נכונות'],
+            answer: 2,
+          },
         ],
       }),
       task('props', {
