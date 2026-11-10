@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 722" width="1200" height="722" direction="rtl" font-family="'Google Sans', 'Noto Sans Hebrew', 'Segoe UI', Arial, sans-serif" text-anchor="start">
+  <title>רכיבים בפירוק · הסרת מגן המצלמה · EVO</title>
+  <rect width="1200" height="722" fill="#F4F7FC"/>
+  <rect width="1200" height="170" fill="#F46A1F"/>
+  <circle cx="90" cy="20" r="140" fill="#fff" opacity="0.08"/>
+  <circle cx="230" cy="190" r="90" fill="#fff" opacity="0.07"/>
+  <text x="1152" y="62" font-size="22" font-weight="700" fill="#fff" opacity="0.85">רכיבים בפירוק · ⁨EVO⁩</text>
+  <text x="1152" y="122" font-size="50" font-weight="800" fill="#fff">הסרת מגן המצלמה</text>
+  <text x="48" y="122" font-size="20" font-weight="600" fill="#fff" opacity="0.85" text-anchor="end">4 רכיבים</text>
+  
+  <g>
+    <rect x="612" y="206" width="540" height="140" rx="22" fill="#fff" stroke="#E6ECF5" stroke-width="2"/>
+    <circle cx="1082" cy="276" r="46" fill="#FFF0E6"/>
+    <g transform="translate(1050 244)"><g fill="none" stroke="#F46A1F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 44 Q14 16 32 16 Q50 16 50 44"/><line x1="8" y1="44" x2="56" y2="44"/><path d="M22 36 Q24 26 30 24" stroke-width="3"/></g></g>
+    <text x="1014" y="252" font-size="25" font-weight="700" fill="#0B2149">מגן מצלמה</text>
+    <text x="1014" y="286" font-size="19" fill="#475569">כיסוי פלסטיק שמגן על העדשה ועל</text>
+    <text x="1014" y="314" font-size="19" fill="#475569">הגימבל בזמן הובלה ואחסון.</text>
+  </g>
+
+  <g>
+    <rect x="48" y="206" width="540" height="140" rx="22" fill="#fff" stroke="#E6ECF5" stroke-width="2"/>
+    <circle cx="518" cy="276" r="46" fill="#FFF0E6"/>
+    <g transform="translate(486 244)"><g fill="none" stroke="#F46A1F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><line x1="32" y1="4" x2="32" y2="17"/><polyline points="26,12 32,18 38,12"/><rect x="12" y="24" width="40" height="26" rx="7"/><circle cx="32" cy="37" r="6" fill="#F46A1F"/></g></g>
+    <text x="450" y="252" font-size="25" font-weight="700" fill="#0B2149">לשונית שחרור</text>
+    <text x="450" y="286" font-size="19" fill="#475569">נקודת הלחיצה שמשחררת את המגן.</text>
+    <text x="450" y="314" font-size="19" fill="#475569">לוחצים עליה — לא מושכים בכוח.</text>
+  </g>
+
+  <g>
+    <rect x="612" y="370" width="540" height="140" rx="22" fill="#fff" stroke="#E6ECF5" stroke-width="2"/>
+    <circle cx="1082" cy="440" r="46" fill="#FFF0E6"/>
+    <g transform="translate(1050 408)"><g fill="none" stroke="#F46A1F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><rect x="23" y="8" width="18" height="6" rx="2"/><path d="M32 14 V20 H52 V42 H46"/><rect x="16" y="32" width="30" height="20" rx="5"/><circle cx="29" cy="42" r="6"/></g></g>
+    <text x="1014" y="416" font-size="25" font-weight="700" fill="#0B2149">גימבל</text>
+    <text x="1014" y="450" font-size="19" fill="#475569">מייצב את המצלמה. רכיב עדין — מכה או</text>
+    <text x="1014" y="478" font-size="19" fill="#475569">סיבוב בכוח עלולים לשבור אותו.</text>
+  </g>
+
+  <g>
+    <rect x="48" y="370" width="540" height="140" rx="22" fill="#fff" stroke="#E6ECF5" stroke-width="2"/>
+    <circle cx="518" cy="440" r="46" fill="#FFF0E6"/>
+    <g transform="translate(486 408)"><g fill="none" stroke="#F46A1F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="22"/><circle cx="32" cy="32" r="13"/><circle cx="32" cy="32" r="5" fill="#F46A1F"/><path d="M22 24 A13 13 0 0 1 30 19.5" stroke-width="3"/></g></g>
+    <text x="450" y="416" font-size="25" font-weight="700" fill="#0B2149">עדשת המצלמה</text>
+    <text x="450" y="450" font-size="19" fill="#475569">החלק הרגיש ביותר במצלמה. לא נוגעים</text>
+    <text x="450" y="478" font-size="19" fill="#475569">בה באצבעות.</text>
+  </g>
+  <rect x="48" y="542" width="1104" height="132" rx="20" fill="#FFFBF0" stroke="#FCEBC0" stroke-width="2"/>
+  <g transform="translate(1088 589)"><path d="M20 3 L38 35 H2 Z" fill="#FFC60A" stroke="#B45309" stroke-width="2.5" stroke-linejoin="round"/><line x1="20" y1="14" x2="20" y2="24" stroke="#78350F" stroke-width="3.5" stroke-linecap="round"/><circle cx="20" cy="30" r="2.2" fill="#78350F"/></g>
+  <text x="1068" y="590" font-size="22" font-weight="800" fill="#78350F">תזכורת בטיחות — עוצרים ובודקים לפני שמתחילים</text><text x="1068" y="624" font-size="19" fill="#92400E">רחפן כבוי וסוללה בחוץ לפני כל מגע · עובדים עם הכלי המתאים ובלי כוח · כל בורג חוזר למקומו · לא</text><text x="1068" y="652" font-size="19" fill="#92400E">נוגעים בעדשה ובמגעים</text>
+</svg>
