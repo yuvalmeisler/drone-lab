@@ -12,11 +12,11 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 WORK=$(mktemp -d)
 trap 'rm -rf "$WORK"' EXIT
 
-W=720; H=1280; FPS=30
+W=1280; H=720; FPS=30
 D=1.2                      # transition length (s)
 NF=$(python3 -c "print(round($D*$FPS))")
 
-# 1) normalise every clip to 720x1280 @30fps; landscape clips get a blurred fill
+# 1) normalise every clip to 1280x720 (landscape) @30fps; portrait clips get a blurred fill
 for i in 1 2 3; do
   ffmpeg -v error -y -i "$SRC/props-$i.mp4" -filter_complex "
     [0:v]fps=$FPS,split[a][b];

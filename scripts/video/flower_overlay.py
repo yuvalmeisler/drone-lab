@@ -3,7 +3,7 @@
 The bloom opens from the centre, covers the frame at the midpoint (hiding the
 cut between clips), then keeps expanding past the edges while fading out.
 
-usage: python3 flower_overlay.py OUT_DIR [--w 720] [--h 1280] [--frames 36] [--seed 1]
+usage: python3 flower_overlay.py OUT_DIR [--w 1280] [--h 720] [--frames 36] [--seed 1]
                                          [--palette mavic|avata]
 """
 import argparse
@@ -99,8 +99,8 @@ def render(out_dir, w, h, frames, seed):
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("out_dir")
-    ap.add_argument("--w", type=int, default=720)
-    ap.add_argument("--h", type=int, default=1280)
+    ap.add_argument("--w", type=int, default=1280)
+    ap.add_argument("--h", type=int, default=720)
     ap.add_argument("--frames", type=int, default=36)
     ap.add_argument("--seed", type=int, default=1)
     ap.add_argument("--palette", choices=sorted(PALETTES), default="mavic")

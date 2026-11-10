@@ -12,14 +12,14 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 WORK=$(mktemp -d)
 trap 'rm -rf "$WORK"' EXIT
 
-W=720; H=1280; FPS=30
+W=1280; H=720; FPS=30
 DA=0.7                     # cut 1 transition (clip 1 is a short establishing shot)
 DB=1.2                     # cut 2 transition
 HOLD=0.8                   # freeze the end of clip 1 so it reads before the cut
 NFA=$(python3 -c "print(round($DA*$FPS))")
 NFB=$(python3 -c "print(round($DB*$FPS))")
 
-# 1) normalise every clip to 720x1280 @30fps; landscape clips get a blurred fill
+# 1) normalise every clip to 1280x720 (landscape) @30fps; portrait clips get a blurred fill
 for i in 1 2 3; do
   PAD=""; APAD=""
   if [ "$i" = 1 ]; then PAD=",tpad=stop_mode=clone:stop_duration=$HOLD"; APAD=",apad=pad_dur=$HOLD"; fi
