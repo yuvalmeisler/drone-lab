@@ -255,6 +255,10 @@ p { margin: 0; }
 @media (max-width: 560px) { .quiz-card { padding: 14px; border-radius: 16px; } .quiz-card h3 { font-size: 16px; margin: 6px 0 10px; } .quiz-options button { padding: 8px 10px; font-size: 14px; } }
 .video-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: -12px; }
 .video-bar .video-tabs { margin-top: 0; }
+.video-tools-note { display: flex; align-items: flex-start; gap: 12px; padding: 14px 18px; border-radius: 18px; background: var(--accent-soft); color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent); }
+.video-tools-note svg { flex-shrink: 0; margin-top: 3px; }
+.video-tools-note p { margin: 0; color: var(--ink); line-height: 1.6; font-size: 15px; }
+.video-tools-note strong { color: var(--accent); }
 .video-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 .video-tabs button { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 999px; border: 1.5px solid color-mix(in srgb, var(--accent) 30%, transparent); background: var(--accent-soft); color: var(--accent); font: inherit; font-weight: 700; font-size: 14px; cursor: pointer; }
 .video-tabs button.active { background: var(--accent); color: #fff; border-color: var(--accent); }

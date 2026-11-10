@@ -222,6 +222,22 @@ export default function TaskPage() {
               </div>
             )}
 
+            <div className="video-tools-note" role="note">
+              <IconTool size={18} />
+              <p>
+                {task.tools.length ? (
+                  <>
+                    <strong>שימו לב:</strong> בסרטון משתמשים בפריטים שמופיעים ברשימת <strong>"כלים נדרשים"</strong>
+                    {' '}({task.tools.join(', ')}). הכינו אותם לפני שמתחילים את שלבי העבודה.
+                  </>
+                ) : (
+                  <>
+                    <strong>שימו לב:</strong> הפירוק בסרטון מתבצע בלי כלים, כפי שמופיע ב<strong>"כלים נדרשים"</strong> — רק ידיים נקיות.
+                  </>
+                )}
+              </p>
+            </div>
+
             <div className="card steps-card">
               <div className="steps-head">
                 <h2>שלבי העבודה</h2>
