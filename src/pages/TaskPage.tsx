@@ -5,7 +5,7 @@ import Amir from '../components/Amir'
 import { useAmir } from '../components/AmirGuide'
 import { IconBolt, IconCheck, IconClock, IconPlay, IconTool } from '../components/Icons'
 import { Page, ease, rise, stagger } from '../components/Motion'
-import { formatTime, getDrone, iso, partsImage, taskKey, videoList, type Part, type VideoQuiz } from '../data/drones'
+import { formatTime, getDrone, iso, taskKey, videoList, type VideoQuiz } from '../data/drones'
 import { toggleDone, useProgress } from '../lib/progress'
 
 function QuizVideo({ src, poster, quizzes }: { src: string; poster: string; quizzes: VideoQuiz[] }) {
@@ -112,36 +112,6 @@ function Video({ src, poster, quizzes }: { src?: string; poster: string; quizzes
   )
 }
 
-function PartsLightbox({ src, title, parts, onClose }: { src: string; title: string; parts: Part[]; onClose: () => void }) {
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose()
-    const overflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    window.addEventListener('keydown', onKey)
-    return () => {
-      document.body.style.overflow = overflow
-      window.removeEventListener('keydown', onKey)
-    }
-  }, [onClose])
-
-  return (
-    <motion.div className="parts-overlay" dir="rtl" role="dialog" aria-modal="true" aria-label={`רכיבים בפירוק — ${title}`} onClick={onClose} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-      <motion.div className="parts-sheet" onClick={(e) => e.stopPropagation()} initial={{ y: 24, scale: 0.97 }} animate={{ y: 0, scale: 1 }} exit={{ y: 16, opacity: 0 }} transition={{ duration: 0.35, ease }}>
-        <div className="parts-head">
-          <b>רכיבים בפירוק</b>
-          <div className="parts-actions">
-            <a href={src} target="_blank" rel="noreferrer">פתיחה בחלון חדש</a>
-            <button onClick={onClose} aria-label="סגירה">✕</button>
-          </div>
-        </div>
-        <div className="parts-body">
-          <img src={src} alt={`${title}: ${parts.map((p) => `${p.name} — ${p.desc}`).join(' ')}`} />
-        </div>
-      </motion.div>
-    </motion.div>
-  )
-}
-
 const COLORS = ['#2F6BFF', '#FFC23C', '#FF6B8A', '#22C55E', '#7C5CFF']
 
 function Confetti() {
@@ -174,14 +144,12 @@ export default function TaskPage() {
   const [checked, setChecked] = useState<number[]>([])
   const [party, setParty] = useState(0)
   const [clip, setClip] = useState(0)
-  const [showParts, setShowParts] = useState(false)
   const videos = videoList(task?.video)
 
   useEffect(() => {
     if (!task) return
     setChecked([])
     setClip(0)
-    setShowParts(false)
     say(task.tip ?? `ב"${task.title}" יש ${task.steps.length} שלבים. צפו בסרטון ואז בצעו אחד-אחד.`, task.tip ? 'point' : 'happy')
   }, [task, say])
 
@@ -237,51 +205,20 @@ export default function TaskPage() {
 
         <div className="task-grid">
           <div className="task-main">
-            <div className={`video-row ${task.safety ? 'has-safety' : ''}`}>
-              <motion.div className="video-card" initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, ease }}>
-                <Video key={videos[clip] ?? 'none'} src={videos[clip]} poster="/photos/hero-repair.jpg" quizzes={clip === 0 ? task.quizzes : undefined} />
-              </motion.div>
-              {task.safety && (
-                <motion.aside className="safety-box" aria-label="הוראות בטיחות" initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, ease, delay: 0.15 }}>
-                  <div className="safety-inner">
-                    <h3>⚠️ בטיחות — לפני שמתחילים</h3>
-                    <p className="safety-intro">{task.safety.intro}</p>
-                    <ul className="safety-list">
-                      {task.safety.rules.map((r) => (
-                        <li key={r.rule}>
-                          <b>{r.rule}</b>
-                          <span>{r.why}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </motion.aside>
-              )}
-            </div>
-            {(videos.length > 1 || !!task.components?.length) && (
+            <motion.div className="video-card" initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, ease }}>
+              <Video key={videos[clip] ?? 'none'} src={videos[clip]} poster="/photos/hero-repair.jpg" quizzes={clip === 0 ? task.quizzes : undefined} />
+            </motion.div>
+            {videos.length > 1 && (
               <div className="video-bar">
-                {videos.length > 1 && (
-                  <div className="video-tabs" role="tablist">
-                    {videos.map((v, i) => (
-                      <button key={v} role="tab" aria-selected={i === clip} className={i === clip ? 'active' : ''} onClick={() => setClip(i)}>
-                        <IconPlay size={11} /> חלק {i + 1}
-                      </button>
-                    ))}
-                  </div>
-                )}
-                {!!task.components?.length && (
-                  <button className="parts-btn" onClick={() => setShowParts(true)}>
-                    <span aria-hidden>🔍</span> רכיבים בפירוק
-                    <small>{task.components?.length} רכיבים · תמונת הסבר</small>
-                  </button>
-                )}
+                <div className="video-tabs" role="tablist">
+                  {videos.map((v, i) => (
+                    <button key={v} role="tab" aria-selected={i === clip} className={i === clip ? 'active' : ''} onClick={() => setClip(i)}>
+                      <IconPlay size={11} /> חלק {i + 1}
+                    </button>
+                  ))}
+                </div>
               </div>
             )}
-            <AnimatePresence>
-              {showParts && task.components && (
-                <PartsLightbox src={partsImage(drone.id, task.id)} title={task.title} parts={task.components} onClose={() => setShowParts(false)} />
-              )}
-            </AnimatePresence>
 
             <div className="card steps-card">
               <div className="steps-head">

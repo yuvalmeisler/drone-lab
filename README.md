@@ -20,12 +20,6 @@ npm run dev
 1. שימו את הקובץ ב-`public/videos/` (למשל `public/videos/evo/props.mp4`).
 2. ב-`src/data/drones.ts` הוסיפו לפירוק `video: '/videos/evo/props.mp4'` (או קישור YouTube).
 
-## תמונות "רכיבים בפירוק"
-
-ליד כל סרטון יש כפתור שפותח תמונה שמסבירה בקצרה כל רכיב בפירוק.
-הרכיבים מוגדרים בשדה `components` של כל פירוק ב-`src/data/drones.ts`.
-אחרי שינוי — הריצו `npm run parts` כדי לבנות מחדש את התמונות ב-`public/components/`.
-
 ## פריסה
 
 `vercel --prod`
