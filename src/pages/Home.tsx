@@ -95,6 +95,27 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="how" className="section container">
+        <Reveal className="section-head">
+          <span className="eyebrow">פשוט וברור</span>
+          <h2>איך זה עובד</h2>
+        </Reveal>
+        <div className="how-grid">
+          {[
+            { icon: <IconLayers size={22} />, color: 'blue', title: 'בוחרים רחפן', text: 'EVO, AVATA, ALPHA, MATRICE 350 או MAVIC 3 — כל אחד עם הפירוקים שלו.' },
+            { icon: <IconPlay size={20} />, color: 'pink', title: 'צופים בסרטון', text: 'סרטון קצר לכל פירוק, מצולם מקרוב, עם כל הכלים הנדרשים.' },
+            { icon: <IconShield size={22} />, color: 'green', title: 'מבצעים ומסמנים', text: 'עוברים על הצעדים, מסמנים ✓ ואמיר עוקב אחרי ההתקדמות שלכם.' },
+          ].map((s, i) => (
+            <Reveal key={s.title} delay={i * 0.12} className="how-card">
+              <span className={`how-icon ${s.color}`}>{s.icon}</span>
+              <span className="how-num">0{i + 1}</span>
+              <h3>{s.title}</h3>
+              <p className="muted">{s.text}</p>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
       <section id="drones" className="section container">
         <Reveal className="section-head">
           <span className="eyebrow">שלב 1</span>
@@ -126,27 +147,6 @@ export default function Home() {
             </motion.div>
           ))}
         </motion.div>
-      </section>
-
-      <section id="how" className="section container">
-        <Reveal className="section-head">
-          <span className="eyebrow">פשוט וברור</span>
-          <h2>איך זה עובד</h2>
-        </Reveal>
-        <div className="how-grid">
-          {[
-            { icon: <IconLayers size={22} />, color: 'blue', title: 'בוחרים רחפן', text: 'EVO, AVATA, ALPHA, MATRICE 350 או MAVIC 3 — כל אחד עם הפירוקים שלו.' },
-            { icon: <IconPlay size={20} />, color: 'pink', title: 'צופים בסרטון', text: 'סרטון קצר לכל פירוק, מצולם מקרוב, עם כל הכלים הנדרשים.' },
-            { icon: <IconShield size={22} />, color: 'green', title: 'מבצעים ומסמנים', text: 'עוברים על הצעדים, מסמנים ✓ ואמיר עוקב אחרי ההתקדמות שלכם.' },
-          ].map((s, i) => (
-            <Reveal key={s.title} delay={i * 0.12} className="how-card">
-              <span className={`how-icon ${s.color}`}>{s.icon}</span>
-              <span className="how-num">0{i + 1}</span>
-              <h3>{s.title}</h3>
-              <p className="muted">{s.text}</p>
-            </Reveal>
-          ))}
-        </div>
 
         <Reveal className="cta-band">
           <img src="/photos/workshop-2.jpg" alt="" aria-hidden />
