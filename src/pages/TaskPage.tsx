@@ -5,7 +5,7 @@ import Amir from '../components/Amir'
 import { useAmir } from '../components/AmirGuide'
 import { IconBolt, IconCheck, IconClock, IconPlay, IconTool } from '../components/Icons'
 import { Page, ease, rise, stagger } from '../components/Motion'
-import { formatTime, getDrone, iso, partsImage, safetyRules, taskKey, videoList, type Part, type VideoQuiz } from '../data/drones'
+import { formatTime, getDrone, iso, partsImage, taskKey, videoList, type Part, type VideoQuiz } from '../data/drones'
 import { toggleDone, useProgress } from '../lib/progress'
 
 function QuizVideo({ src, poster, quizzes }: { src: string; poster: string; quizzes: VideoQuiz[] }) {
@@ -309,21 +309,20 @@ export default function TaskPage() {
                 <p className="muted">לא צריך כלים — רק ידיים נקיות.</p>
               )}
             </div>
-            <div className="card safety">
-              <h3 className="side-title">⚠️ בטיחות — לפני שמתחילים</h3>
-              <p className="safety-why">
-                הבטיחות היא חלק מהפירוק, לא שלב שמדלגים עליו. רוב הנזקים בסדנה — לאצבעות ולרחפן — קורים בשנייה של חוסר תשומת לב.
-                עוברים על הרשימה לפני כל פירוק, גם אם כבר עשיתם אותו.
-              </p>
-              <ul className="tools safety-list">
-                {safetyRules.map((r) => (
-                  <li key={r.rule}>
-                    <b>{r.rule}</b>
-                    <span>{r.why}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {task.safety && (
+              <div className="card safety">
+                <h3 className="side-title">⚠️ בטיחות — לפני שמתחילים</h3>
+                <p className="safety-why">{task.safety.intro}</p>
+                <ul className="tools safety-list">
+                  {task.safety.rules.map((r) => (
+                    <li key={r.rule}>
+                      <b>{r.rule}</b>
+                      <span>{r.why}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
             {task.tip && (
               <div className="card amir-tip">
                 <Amir mood="point" size={64} />
