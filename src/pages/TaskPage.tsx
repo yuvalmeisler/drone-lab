@@ -237,9 +237,27 @@ export default function TaskPage() {
 
         <div className="task-grid">
           <div className="task-main">
-            <motion.div className="video-card" initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, ease }}>
-              <Video key={videos[clip] ?? 'none'} src={videos[clip]} poster="/photos/hero-repair.jpg" quizzes={clip === 0 ? task.quizzes : undefined} />
-            </motion.div>
+            <div className={`video-row ${task.safety ? 'has-safety' : ''}`}>
+              <motion.div className="video-card" initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, ease }}>
+                <Video key={videos[clip] ?? 'none'} src={videos[clip]} poster="/photos/hero-repair.jpg" quizzes={clip === 0 ? task.quizzes : undefined} />
+              </motion.div>
+              {task.safety && (
+                <motion.aside className="safety-box" aria-label="הוראות בטיחות" initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, ease, delay: 0.15 }}>
+                  <div className="safety-inner">
+                    <h3>⚠️ בטיחות — לפני שמתחילים</h3>
+                    <p className="safety-intro">{task.safety.intro}</p>
+                    <ul className="safety-list">
+                      {task.safety.rules.map((r) => (
+                        <li key={r.rule}>
+                          <b>{r.rule}</b>
+                          <span>{r.why}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </motion.aside>
+              )}
+            </div>
             {(videos.length > 1 || !!task.components?.length) && (
               <div className="video-bar">
                 {videos.length > 1 && (
