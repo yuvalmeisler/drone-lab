@@ -118,7 +118,6 @@ export default function Home() {
 
       <section id="drones" className="section container">
         <Reveal className="section-head">
-          <span className="eyebrow">שלב 1</span>
           <h2>בחרו רחפן</h2>
           <p>לכל רחפן יש את הפירוקים שלו. לחצו על רחפן כדי לראות אותם.</p>
         </Reveal>
@@ -147,16 +146,6 @@ export default function Home() {
             </motion.div>
           ))}
         </motion.div>
-
-        <Reveal className="cta-band">
-          <img src="/photos/workshop-2.jpg" alt="" aria-hidden />
-          <div className="cta-band-copy">
-            <h3>מוכנים להתחיל?</h3>
-            <p>הפירוק הראשון הכי קל: התקנת מדחפים. 5 דקות וזה מאחוריכם.</p>
-            <Link to="/drone/mavic-3/props" className="btn btn-light">להתחיל עכשיו</Link>
-          </div>
-          <div className="cta-band-amir"><Amir mood="cheer" size={130} /></div>
-        </Reveal>
       </section>
     </Page>
   )

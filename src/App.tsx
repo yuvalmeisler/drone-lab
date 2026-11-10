@@ -63,7 +63,6 @@ export default function App() {
         <footer className="footer">
           <div className="container footer-inner">
             <span>סדנת הרחפנים · חומר לימוד פנימי. בכל מקרה של ספק — עובדים לפי הוראות היצרן.</span>
-            <Link to="/credits">קרדיט לתמונות</Link>
           </div>
         </footer>
       </AmirProvider>
