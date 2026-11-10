@@ -3,7 +3,7 @@ import { Link, Navigate, useParams } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import Amir from '../components/Amir'
 import { useAmir } from '../components/AmirGuide'
-import { IconBolt, IconCheck, IconClock, IconPlay, IconTool } from '../components/Icons'
+import { IconBolt, IconCheck, IconClock, IconPlay, IconShield, IconTool } from '../components/Icons'
 import { Page, ease, rise, stagger } from '../components/Motion'
 import { formatTime, getDrone, iso, taskKey, videoList, type VideoQuiz } from '../data/drones'
 import { toggleDone, useProgress } from '../lib/progress'
@@ -111,6 +111,8 @@ function Video({ src, poster, quizzes }: { src?: string; poster: string; quizzes
     </div>
   )
 }
+
+const SAFETY = ['הרחפן כבוי', 'הסוללה מוצאת', 'סביבת עבודה נקייה ובטוחה']
 
 const COLORS = ['#2F6BFF', '#FFC23C', '#FF6B8A', '#22C55E', '#7C5CFF']
 
@@ -263,6 +265,12 @@ export default function TaskPage() {
               ) : (
                 <p className="muted">לא צריך כלים — רק ידיים נקיות.</p>
               )}
+            </div>
+            <div className="card safety">
+              <h3 className="side-title"><IconShield size={18} /> הנחיות בטיחות</h3>
+              <ul className="safety-list">
+                {SAFETY.map((s) => <li key={s}><IconCheck size={14} /> {s}</li>)}
+              </ul>
             </div>
             {task.tip && (
               <div className="card amir-tip">
