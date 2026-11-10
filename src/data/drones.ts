@@ -227,7 +227,6 @@ export const drones: Drone[] = [
     accentSoft: '#FFF0E6',
     specs: ['זמן טיסה ~40 דק׳', 'מצלמה כפולה', 'מתקפל'],
     tasks: [
-      task('controller'),
       task('gimbal', {
         difficulty: 'בינוני',
         minutes: 3,
@@ -418,7 +417,6 @@ export const drones: Drone[] = [
         minutes: 1,
         video: '/videos/mavic-3/speaker.mp4',
       }),
-      task('camera-cover', { minutes: 0.5 }),
     ],
   },
 ]
