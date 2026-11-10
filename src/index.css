@@ -298,12 +298,6 @@ p { margin: 0; }
 .side-title { display: flex; align-items: center; gap: 8px; font-size: 16px; margin-bottom: 12px; }
 .tools { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
 .tools li { padding: 10px 14px; border-radius: 12px; background: var(--soft); font-size: 14.5px; }
-.safety { background: #FFFBF0; border-color: #FCEBC0; }
-.safety .tools li { background: #fff; }
-.safety-why { font-size: 14px; color: #78350F; margin: -4px 0 12px; line-height: 1.55; }
-.safety-list li { display: grid; gap: 2px; }
-.safety-list li b { font-size: 14.5px; }
-.safety-list li span { font-size: 13px; color: var(--muted); line-height: 1.45; }
 .amir-tip { display: flex; gap: 12px; align-items: flex-start; background: var(--accent-soft); border-color: transparent; }
 .amir-tip b { color: var(--accent); }
 .amir-tip p { font-size: 14.5px; margin-top: 4px; }

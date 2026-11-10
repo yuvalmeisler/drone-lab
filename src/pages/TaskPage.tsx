@@ -309,20 +309,6 @@ export default function TaskPage() {
                 <p className="muted">לא צריך כלים — רק ידיים נקיות.</p>
               )}
             </div>
-            {task.safety && (
-              <div className="card safety">
-                <h3 className="side-title">⚠️ בטיחות — לפני שמתחילים</h3>
-                <p className="safety-why">{task.safety.intro}</p>
-                <ul className="tools safety-list">
-                  {task.safety.rules.map((r) => (
-                    <li key={r.rule}>
-                      <b>{r.rule}</b>
-                      <span>{r.why}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
             {task.tip && (
               <div className="card amir-tip">
                 <Amir mood="point" size={64} />
