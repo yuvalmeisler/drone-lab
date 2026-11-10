@@ -16,7 +16,6 @@ const GuideContext = createContext<GuideApi>({ say: () => {}, setHidden: () => {
 
 const TIPS: Line[] = [
   { text: 'לפני כל פירוק — סוללה בחוץ. תמיד.', mood: 'point' },
-  { text: 'שימו את הברגים בקופסה ממוספרת לפי הסדר. ככה ההרכבה נהיית קלה.', mood: 'happy' },
   { text: 'לא נכנס? לא מפעילים כוח. עוצרים ובודקים שוב.', mood: 'think' },
   { text: 'צלמו בטלפון לפני שמנתקים כבל — ותדעו בדיוק איך הוא חוזר.', mood: 'point' },
   { text: 'עבודה על משטח בהיר ומואר = פחות ברגים אבודים.', mood: 'happy' },

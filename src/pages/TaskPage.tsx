@@ -267,7 +267,6 @@ export default function TaskPage() {
               <ul className="tools">
                 <li>רחפן כבוי, סוללה בחוץ</li>
                 <li>משטח עבודה נקי ומואר</li>
-                <li>קופסה לברגים</li>
               </ul>
             </div>
             {task.tip && (
